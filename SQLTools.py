@@ -80,7 +80,7 @@ def getConnections():
         pass
 
     print(connectionsObj)
-    # print(connectionsObj['***REMOVED***_pgsql'].all)
+    # print(connectionsObj['SQL18_pgsql'].all)
     return connectionsObj
 
 

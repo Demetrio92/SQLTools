@@ -29,6 +29,7 @@ class Connection:
 
         self.cli = settings.get('cli')[options['type']]
         # cli_path = shutil.which(self.cli)
+        # this is the bug
         cli_path = self.cli
         print(' --- i am init ---')
         print(options)
