@@ -28,9 +28,20 @@ class Connection:
         self.Command = getattr(C, commandClass)
 
         self.cli = settings.get('cli')[options['type']]
-        cli_path = shutil.which(self.cli)
+        # cli_path = shutil.which(self.cli)
+        cli_path = self.cli
+        print(' --- i am init ---')
+        print(options)
+        print(options['type'])
+        print(self.cli)
+        print(cli_path)
 
         if cli_path is None:
+            print('I am here')
+            print((
+                "'{0}' could not be found.\n\n" +
+                "Please set the '{0}' path in your SQLTools settings " +
+                "before continue.").format(self.cli))
             Log((
                 "'{0}' could not be found.\n\n" +
                 "Please set the '{0}' path in your SQLTools settings " +
@@ -60,6 +71,7 @@ class Connection:
             self.database, self.username, self.host, self.port)
 
     def getTables(self, callback):
+        print(type(self))
         query = self.getOptionsForSgdbCli()['queries']['desc']['query']
 
         def cb(result):
@@ -156,6 +168,12 @@ class Connection:
         return args
 
     def getOptionsForSgdbCli(self):
+        # print(self)
+        print('---------- getOptionsForSgdbCli reporting -------')
+        print(type(self))
+        print(type(self.settings))
+        # print(type(self.all()))
+        # print(self.settings)
         return self.settings.get('cli_options', {}).get(self.type)
 
     @staticmethod

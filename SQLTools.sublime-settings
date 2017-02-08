@@ -17,7 +17,7 @@
     ],
     "cli" : {
         "mysql"   : "mysql",
-        "pgsql"   : "psql",
+        "pgsql"   : "C:***REMOVED***/pgadmin-III/1.22/psql",
         "oracle"  : "sqlplus",
         "vertica" : "vsql",
         "sqsh"    : "sqsh",
@@ -43,7 +43,7 @@
      * Avoid changing the brackets content in "args"
      */
     "cli_options": {
-        "pgsql": {
+        "C:***REMOVED***/pgadmin-III/1.22/psql": {
             "options": [],
             "before": [],
             "args": "-h {host} -p {port} -U {username} -d {database}",

@@ -32,6 +32,8 @@ def startPlugin():
 
     USER_FOLDER = os.path.join(sublime.packages_path(), 'User')
     DEFAULT_FOLDER = os.path.dirname(__file__)
+    print(USER_FOLDER)
+    print(DEFAULT_FOLDER)
 
     SETTINGS_FILENAME            = os.path.join(USER_FOLDER, "SQLTools.sublime-settings")
     SETTINGS_FILENAME_DEFAULT    = os.path.join(DEFAULT_FOLDER, "SQLTools.sublime-settings")
@@ -62,6 +64,8 @@ def getConnections():
         startPlugin()
 
     options = connections.get('connections', {})
+    print(' -- options --')
+    print(options)
 
     for name, config in options.items():
         connectionsObj[name] = Connection(name, config, settings=settings.all())
@@ -72,8 +76,11 @@ def getConnections():
         for name, config in options.items():
             connectionsObj[name] = Connection(name, config, settings=settings.all())
     except Exception:
+        print('could not get connections!')
         pass
 
+    print(connectionsObj)
+    # print(connectionsObj['***REMOVED***_pgsql'].all)
     return connectionsObj
 
 
@@ -186,6 +193,8 @@ class ST(EventListener):
             if functionsCallback:
                 functionsCallback()
 
+# dsf fddf f
+        print(type(tbCallback))
         ST.conn.getTables(tbCallback)
         ST.conn.getColumns(colCallback)
         ST.conn.getFunctions(funcCallback)
